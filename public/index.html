@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="myCtrl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Football Score </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <h2> Football Score </h2>
+
+   
+    <table>
+        <tr ng-repeat="x in myData | orderBy: 'fixture.timestamp'">
+            <td>
+                {{x.teams.home.name}}
+            </td>
+            <td>
+                {{x.score.fulltime.home}}
+            </td>
+            <td>
+                {{x.score.fulltime.away}}
+            </td>
+            <td>
+                {{x.teams.away.name}}
+            </td>
+            <td>
+                {{x.fixture.timestamp * 1000   | date:"MM/dd/yyyy 'at' h:mma"}}
+            </td>
+        </tr>
+    </table>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
