@@ -9,11 +9,19 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <h2> Football Score </h2>
+    <h2> WorldCup App </h2>
 
+    <div id="outer">
+        <div class="inner"><button   onClick="return false;" >À venir</button></div>
+        <div class="inner"><button  onClick="return false;">Direct</button></div>
+        <div class="inner"><button onClick="return false;">Passés</button></div>
+      </div>
    
     <table>
-        <tr ng-repeat="x in myData | orderBy: 'fixture.timestamp'">
+        <!--| filter :{'fixture.status.long' :'Match Finished'}-->
+        {{unique}}
+
+        <tr ng-repeat="x in myData | orderBy: '-fixture.timestamp' | filter : {'fixture': {'status':{'long' :'Match Finished'}} }">
             <td>
                 {{x.teams.home.name}}
             </td>
@@ -29,10 +37,16 @@
             <td>
                 {{x.fixture.timestamp * 1000   | date:"MM/dd/yyyy 'at' h:mma"}}
             </td>
+            <td>
+                {{x.fixture.status.long}}
+            </td>
         </tr>
     </table>
 
 
     <script src="script.js"></script>
+
+
+
 </body>
 </html>

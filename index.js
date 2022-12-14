@@ -18,7 +18,7 @@ app.get('/fixtures', async ( request ,response) => {
             'X-RapidAPI-Host': 'api-football-beta.p.rapidapi.com'
         }
     };
-    
+        
     const fetchApi = await fetch('https://api-football-beta.p.rapidapi.com/fixtures?season=2022&league=1', options);
     
     const fixtureResponse = await fetchApi.json();
